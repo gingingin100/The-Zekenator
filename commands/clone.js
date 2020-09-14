@@ -6,8 +6,8 @@ module.exports = {
 	execute(message, args) {
         var i;
         for (i = 0; i < args.length; i++) {
-            if(message.guild.emojis.cache.find(emoji => emoji.name === args[i])) {
-                args[i] = message.guild.emojis.cache.find(emoji => emoji.name === args[i])
+            if(message.client.emojis.cache.find(emoji => emoji.name === args[i])) {
+                args[i] = message.client.emojis.cache.find(emoji => emoji.name === args[i])
             }
         }
         const webhookClient = new Discord.WebhookClient(config.webhookID, config.webhookToken);
