@@ -3,9 +3,8 @@ module.exports = {
     name: 'play',
     description: 'Plays music i dunno',
     execute(message,args) {
-            console.log(args);
-            var url=args[0];
-            console.log(url);
+            const yurl=args[0].split(/^(?:https?:\/\/)?(?:(?:www\.)?youtube.com\/watch\?v=|youtu.be\/)(\w+)$/)
+            var url=`https://www.youtube.com/watch?v=${yurl[1]}`
             if (message.channel.type !== 'text') return;
     
             const voiceChannel = message.member.voice.channel;
@@ -15,7 +14,7 @@ module.exports = {
             }
     
             voiceChannel.join().then(connection => {
-                const stream = ytdl(url, { filter: 'audioonly' });
+                const stream = ytdl(url, { filter: format => format.container === 'mp4', highWaterMark: 1<<25});
                 const dispatcher = connection.play(stream);
                 dispatcher.on('end', () => voiceChannel.leave());
             });

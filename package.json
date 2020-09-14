@@ -1,7 +1,6 @@
 {
-  "name": "The-Zekenator",
+  "name": "the-zekenator",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,8 +11,19 @@
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
     "discord.js": "^12.2.0",
-    "eslint": "^7.0.0",
+    "eslint": "^7.6.0",
     "ffmpeg-static": "^4.2.2",
-    "ytdl-core": "^3.1.0"
-  }
+    "ytdl-core": "^3.1.0",
+    "ytdl-core-discord": "^1.2.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gingingin100/The-Zekenator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gingingin100/The-Zekenator/issues"
+  },
+  "homepage": "https://github.com/gingingin100/The-Zekenator#readme",
+  "description": ""
 }
