@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 module.exports={
     name: 'emoji',
-	description: 'Get the image of a custom emoji',
+    description: 'Get the image of a custom emoji',
+    guildOnly: true,
 	execute(message,args) {
         const splits = args[0].split(/(:|>)/)
         switch(true){

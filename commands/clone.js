@@ -1,16 +1,17 @@
-const Discord = require('discord.js');
-const config = require('../config.json');
 module.exports = {
 	name: 'clone',
-	description: 'say stuff',
-	execute(message, args) {
+    description: 'say stuff',
+    guildOnly: true,
+	async execute(message, args) {
         var i;
         for (i = 0; i < args.length; i++) {
             if(message.client.emojis.cache.find(emoji => emoji.name === args[i])) {
                 args[i] = message.client.emojis.cache.find(emoji => emoji.name === args[i])
             }
         }
-        const webhookClient = new Discord.WebhookClient(config.webhookID, config.webhookToken);
+        const guild = message.channel
+        const webhook = await guild.fetchWebhooks()
+        let webhookClient = webhook.find(w =>w.name === "Zeke Webhook")
         var link=message.author.displayAvatarURL({ format: "png", dynamic: true ,size: 1024});
         message.delete().then(webhookClient.send(args.join(" "),{
                 username: message.author.username,
