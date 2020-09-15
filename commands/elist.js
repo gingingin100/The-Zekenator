@@ -1,7 +1,8 @@
 //const fs = require('fs');
 module.exports = {
 	name: 'elist',
-    description: 'say stuff',
+    description: 'List of all emojis in serer.',
+    aliases: [`emotelist`],
     guildOnly: true,
 	async execute(message){
         const emojiList = message.guild.emojis.cache.map(e=>e.toString()).join(" ");

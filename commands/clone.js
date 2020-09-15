@@ -1,12 +1,17 @@
 module.exports = {
 	name: 'clone',
-    description: 'say stuff',
+    description: 'definitely not circumventing Nitro',
     guildOnly: true,
 	async execute(message, args) {
         var i;
-        for (i = 0; i < args.length; i++) {
-            if(message.client.emojis.cache.find(emoji => emoji.name === args[i])) {
-                args[i] = message.client.emojis.cache.find(emoji => emoji.name === args[i])
+        for(i=0 ; i<args.length ; i++){
+            let temporary = args[i]
+            let temporary2 = temporary.split(":")[1]
+            if(temporary2) {
+                args[i]=temporary2
+                var temp = message.client.emojis.cache.find(emoji => emoji.name === args[i])
+                if(temp) 
+                    args[i] = temp.toString()
             }
         }
         const guild = message.channel
