@@ -1,4 +1,4 @@
-var {emojireact, wordreact, phrasereact, nsfwreact} = require('./functions');
+var {emojireact, wordreact, phrasereact, nsfwreact,webhookmaker} = require('./functions');
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
@@ -27,6 +27,7 @@ client.on('message', async message => {
     emojireact(message);
     wordreact(message);
     phrasereact(message);
+    webhookmaker(message);
     if(message.channel.nsfw) nsfwreact(message);
     if (!message.content.startsWith(prefix)) return;
     

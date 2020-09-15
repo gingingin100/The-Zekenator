@@ -9,6 +9,13 @@ var getRandomInt=function(max) {
 async function play(connection, url) {
 	connection.play(await ytdl(url), { type: 'opus' });
 }
+async function webhookmaker(message){
+    const channel = message.channel
+    let iwebhook = await channel.fetchWebhooks()
+    if (typeof iwebhook.find(w =>w.name === "Zeke Webhook") == 'undefined'){
+        message.channel.createWebhook('Zeke Webhook')
+    }
+}
 async function emojireact(message){
     var newmessage=message.content
     newmessage=newmessage.toLowerCase();
@@ -129,4 +136,4 @@ async function nsfwreact(message){
             break;
     }
 }
-module.exports= {has,getRandomInt,play,emojireact,wordreact,phrasereact,nsfwreact};
+module.exports= {has,getRandomInt,play,emojireact,wordreact,phrasereact,nsfwreact,webhookmaker};
