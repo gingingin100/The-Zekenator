@@ -10,10 +10,12 @@ async function play(connection, url) {
 	connection.play(await ytdl(url), { type: 'opus' });
 }
 async function webhookmaker(message){
-    const channel = message.channel
-    let iwebhook = await channel.fetchWebhooks()
-    if (typeof iwebhook.find(w =>w.name === "Zeke Webhook") == 'undefined'){
-        message.channel.createWebhook('Zeke Webhook')
+    if(message.channel.type !== "dm"){
+        const channel = message.channel
+        let iwebhook = await channel.fetchWebhooks()
+        if (typeof iwebhook.find(w =>w.name === "Zeke Webhook") == 'undefined'){
+            message.channel.createWebhook('Zeke Webhook')
+        }
     }
 }
 async function emojireact(message){
